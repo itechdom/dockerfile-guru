@@ -1,13 +1,52 @@
-# iTechdom Blog
-Sharing what I learn about almost everything.
+# Dockerfile-guru
 
-## Branching system
-Due to the overwhelming number of repos that I start just to experiment with a new framework, I split up this repo into branches. Each branch contains a        language/framework/project that I am experimenting with. This helps me separate the build process from code which makes it very easy to branch off master and   install the appropiate packages and get coding.
+The project aims to allow you to import external Dockerfiles.
 
-## Installation
-* `git checkout any-branch` to use a specific branch.
-* Go to README to learn more about the project.
+### getting started
 
-## Upcoming Features
-* Docker:
-Many Examples here involve a lot of setup to run the actual code. That's why I am going to use docker scripts here to install all the required components and   handle running all the applications.
+you need to have a Dockerfile.template file in the current directory. For example, I have this Dockerfile:
+```
+IMPORT ../Dockerfile.master
+IMPORT ../Documents/Dockerfile.master
+EXPOSE 3000
+CMD [ "npm", "start" ]
+```
+as you can see, we are importing other Dockerfiles using the import statement. After running ```dfg```, you will see the Dockerfile generated with the external Dockerfiles included, as so:
+```
+FROM node:wheezy
+
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package.json /usr/src/app/
+RUN apt-get update
+RUN apt-get install -y build-essential g++
+RUN npm install -g gulp
+RUN npm install
+RUN npm rebuild node-sass
+
+# Bundle app source
+COPY . /usr/src/app
+
+#this is another master
+#first line is where the master lives
+EXPOSE 3000
+CMD [ "npm", "start" ]
+```
+
+### Installing
+```
+npm install -g dockerfile-guru
+```
+
+## Running the tests
+```sh
+npm test
+```
+
+## License
+
+## Acknowledgments
+

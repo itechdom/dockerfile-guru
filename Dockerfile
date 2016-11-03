@@ -18,4 +18,4 @@ COPY . /usr/src/app
 #this is another master
 #first line is where the master lives
 EXPOSE 3000
-CMD [ "npme", "start" ]
+CMD [ "npm", "start" ]
