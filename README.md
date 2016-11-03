@@ -41,6 +41,8 @@ CMD [ "npm", "start" ]
 npm install -g dockerfile-guru
 ```
 
+and run ``` dfg ``` to generate the Dockerfile.
+
 ## Running the tests
 ```sh
 npm test
