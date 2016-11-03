@@ -7,6 +7,9 @@
     "commander": "^2.9.0"
   },
   "devDependencies": {},
+  "bin":{
+      "dfg":"./bin/dfg.js"
+  }
   "scripts": {
     "test": "mocha index.spec.js"
   },
