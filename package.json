@@ -9,7 +9,7 @@
   "devDependencies": {},
   "bin":{
       "dfg":"./bin/dfg.js"
-  }
+  },
   "scripts": {
     "test": "mocha index.spec.js"
   },
